@@ -7,16 +7,18 @@ import com.project.Bean.Vendor;
 import com.project.dao.TenderDao;
 import com.project.dao.TenderDaoImp;
 
-public class ViewAllTheVendor {
+public class ViewAllVendor {
 
 	public static void main(String[] args) {
 		
-		TenderDao tdao=new TenderDaoImp();
+		TenderDao dao=new TenderDaoImp();
+		
+		
 		try {
-
-			List<Vendor> vendor=new ArrayList<>();
 			
-			vendor.forEach(v->{
+			List<Vendor> vendors=dao.viewAllVendor();
+			
+			vendors.forEach(v->{
 				System.out.println("Vendor Id: "+v.getVid());
 				System.out.println("Vendor Name: "+v.getVname());
 				System.out.println("Email: "+v.getEmail());
@@ -25,8 +27,6 @@ public class ViewAllTheVendor {
 				System.out.println("Address: "+v.getAddress());
 				System.out.println();
 			});
-			
-			
 			
 		} catch (Exception e) {
 			e.printStackTrace();
