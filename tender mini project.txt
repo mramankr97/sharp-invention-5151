@@ -1,0 +1,20 @@
+create table vendor
+(
+vid int primary key auto_increment,
+vname varchar(12),
+email varchar(15),
+password varchar(20),
+company varchar(20),
+address varchar(20)
+);
+
+
+create table tender
+(
+tid int primary key auto_increment,
+tname varchar(20),
+type varchar(20),
+price int,
+deadline date,
+location varchar(20)
+);
