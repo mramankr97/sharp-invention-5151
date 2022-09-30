@@ -18,3 +18,29 @@ price int,
 deadline date,
 location varchar(20)
 );
+
+
+
+create table ten_ven
+(
+tndId int,
+venId int,
+foreign key(tndid) references tender(tid) on delete cascade on update cascade,
+foreign key(venid) references vendor(vid)on delete cascade on update cascade
+);
+
+
+
+create table bid
+(
+t1id int,
+v1id int,
+bid int,
+foreign key(t1id) references tender(tid),
+foreign key(v1id) references vendor(vid)
+);
+
+
+
+
+select t.* from tender t INNER JOIN ten_ven tv ON t.tid=tv.tndid;
