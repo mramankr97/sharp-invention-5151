@@ -1,0 +1,107 @@
+create table vendor
+(
+vid int primary key auto_increment,
+vname varchar(12),
+email varchar(15),
+password varchar(20),
+company varchar(20),
+address varchar(20)
+);
+
+
+create table tender
+(
+tid int primary key auto_increment,
+tname varchar(20),
+type varchar(20),
+price int,
+deadline date,
+location varchar(20)
+);
+
+
+
+create table ten_ven
+(
+tndId int,
+venId int,
+foreign key(tndid) references tender(tid) on delete cascade on update cascade,
+foreign key(venid) references vendor(vid)on delete cascade on update cascade
+);
+
+
+
+create table bid
+(
+t1id int,
+v1id int,
+bid int,
+foreign key(t1id) references tender(tid),
+foreign key(v1id) references vendor(vid)
+);
+
+
+create table admin ( adminName varchar(20),admEmail varchar(40),adminPass  varchar(20));
+
+mysql> desc admin;
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| adminName | varchar(20) | YES  |     | NULL    |       |
+| admEmail  | varchar(40) | YES  |     | NULL    |       |
+| adminPass | varchar(20) | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> desc vendor;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| vid      | int         | NO   | PRI | NULL    | auto_increment |
+| vname    | varchar(12) | YES  |     | NULL    |                |
+| email    | varchar(15) | YES  |     | NULL    |                |
+| password | varchar(20) | YES  |     | NULL    |                |
+| company  | varchar(20) | YES  |     | NULL    |                |
+| address  | varchar(20) | YES  |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+mysql> desc tendor;
+ERROR 1146 (42S02): Table 'tendervender.tendor' doesn't exist
+mysql> desc tender;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| tid      | int         | NO   | PRI | NULL    | auto_increment |
+| tname    | varchar(20) | YES  |     | NULL    |                |
+| type     | varchar(20) | YES  |     | NULL    |                |
+| price    | int         | YES  |     | NULL    |                |
+| deadline | date        | YES  |     | NULL    |                |
+| location | varchar(20) | YES  |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+6 rows in set (0.00 sec)
+
+
+mysql> desc bid;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| t1id  | int  | YES  | MUL | NULL    |       |
+| v1id  | int  | YES  | MUL | NULL    |       |
+| bid   | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+
+mysql> desc ten_ven;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| tndId | int  | YES  | MUL | NULL    |       |
+| venId | int  | YES  | MUL | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+
+
